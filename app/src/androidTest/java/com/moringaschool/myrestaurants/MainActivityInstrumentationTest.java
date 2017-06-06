@@ -2,6 +2,8 @@ package com.moringaschool.myrestaurants;
 
 import android.support.test.rule.ActivityTestRule;
 
+import com.moringaschool.myrestaurants.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

@@ -3,6 +3,8 @@ package com.moringaschool.myrestaurants;
 import android.os.Build;
 import android.widget.ListView;
 
+import com.moringaschool.myrestaurants.ui.RestaurantsActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
