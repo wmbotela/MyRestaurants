@@ -1,8 +1,7 @@
-package com.moringaschool.myrestaurants.adaptor;
+package com.moringaschool.myrestaurants.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 /**
  * Created by william on 5/24/17.

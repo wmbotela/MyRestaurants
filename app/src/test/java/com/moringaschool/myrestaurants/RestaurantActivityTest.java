@@ -3,7 +3,7 @@ package com.moringaschool.myrestaurants;
 import android.os.Build;
 import android.widget.ListView;
 
-import com.moringaschool.myrestaurants.ui.RestaurantsActivity;
+import com.moringaschool.myrestaurants.ui.RestaurantsListActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +24,12 @@ import static junit.framework.Assert.assertNotNull;
 
 public class RestaurantActivityTest {
 
-    private RestaurantsActivity activity;
+    private RestaurantsListActivity activity;
     private ListView mRestaurantListView;
 
     @Before
     public void setup() {
-        activity = Robolectric.setupActivity(RestaurantsActivity.class);
+        activity = Robolectric.setupActivity(RestaurantsListActivity.class);
         mRestaurantListView = (ListView) activity.findViewById(R.id.listView);
     }
 
