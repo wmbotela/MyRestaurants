@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "17948805640",
+    "firebase_url": "https://myrestaurants-47445.firebaseio.com",
+    "project_id": "myrestaurants-47445",
+    "storage_bucket": "myrestaurants-47445.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17948805640:android:08546c0ccf8805b8",
+        "android_client_info": {
+          "package_name": "com.moringaschool.myrestaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17948805640-s6hfe98o9f45qb2oegrkkeilu7ubarm0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.myrestaurants",
+            "certificate_hash": "75d23e6c82cbe27e784502375f40b5569d7516e9"
+          }
+        },
+        {
+          "client_id": "17948805640-prku5pof1a80e85dt86e4qh14dsfr3mt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbK5rWERetbjDyk3yV-Qo9DJLrb2PQ1p0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17948805640-prku5pof1a80e85dt86e4qh14dsfr3mt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

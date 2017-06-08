@@ -1,11 +1,15 @@
 package com.moringaschool.myrestaurants.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.moringaschool.myrestaurants.Constants;
 import com.moringaschool.myrestaurants.R;
 import com.moringaschool.myrestaurants.adapters.RestaurantListAdapter;
 import com.moringaschool.myrestaurants.models.Restaurant;
@@ -21,6 +25,10 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantsListActivity extends AppCompatActivity {
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAdress;
+
+
     public static final String TAG = RestaurantsListActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
@@ -33,6 +41,11 @@ public class RestaurantsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAdress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//            if (mRecentAdress !=null){
+//                getRestaurants(mRecentAdress);
+//            }
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
 

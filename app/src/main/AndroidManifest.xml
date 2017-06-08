@@ -23,12 +23,13 @@
         <activity android:name=".ui.RestaurantsListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.myrestaurants.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.myrestaurants.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.RestaurantDetailActivity"
             android:label="@string/title_activity_restaurant_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.SavedRestaurantListActivity"></activity>
     </application>
 
 </manifest>
