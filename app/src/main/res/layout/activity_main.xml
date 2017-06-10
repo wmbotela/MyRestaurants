@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     tools:background="#000000"
-    tools:context="com.moringaschool.myrestaurants.ui.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -26,18 +26,6 @@
         android:textColor="@color/colorTextIcons"
         android:textSize="60sp"
         android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/locationEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@color/colorTextIcons"
-        android:ems="10"
-        android:padding="5dp"
-        android:hint="Enter Zip Code"
-        android:layout_above="@+id/findRestaurantsButton"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/findRestaurantsButton"
