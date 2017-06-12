@@ -47,8 +47,8 @@ public class SavedRestaurantListActivity extends AppCompatActivity implements On
 
         Query query = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
-                .child(uid)
-                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+                .child(uid);
+//                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseRestaurantListAdapter(Restaurant.class,
                 R.layout.restaurant_list_item_drag, FirebaseRestaurantViewHolder.class,
