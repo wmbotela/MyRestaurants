@@ -1,5 +1,7 @@
 package com.moringaschool.myrestaurants.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -46,7 +48,6 @@ public class FirebaseRestaurantViewHolder extends RecyclerView.ViewHolder implem
 
     public void bindRestaurant(Restaurant restaurant) {
         mRestaurantImageView = (ImageView) mView.findViewById(R.id.restaurantImageView);
-
         TextView nameTextView = (TextView) mView.findViewById(R.id.restaurantNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
@@ -65,21 +66,29 @@ public class FirebaseRestaurantViewHolder extends RecyclerView.ViewHolder implem
     }
     @Override
     public void onItemSelected() {
-        Log.d("Animation", "onItemSelected");
-        itemView.animate()
-                .alpha(0.7f)
-                .scaleX(0.9f)
-                .scaleY(0.9f)
-                .setDuration(500);
+//        Log.d("Animation", "onItemSelected");
+//        itemView.animate()
+//                .alpha(0.7f)
+//                .scaleX(0.9f)
+//                .scaleY(0.9f)
+//                .setDuration(500);
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
     }
 
     @Override
     public void onItemClear() {
-        Log.d("Animation", "onItemClear");
-        itemView.animate()
-                .alpha(1f)
-                .scaleX(1f)
-                .scaleY(1f);
+//        Log.d("Animation", "onItemClear");
+//        itemView.animate()
+//                .alpha(1f)
+//                .scaleX(1f)
+//                .scaleY(1f);
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
     }
 
 
