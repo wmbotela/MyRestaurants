@@ -44,11 +44,19 @@ public class RestaurantListFragment extends Fragment {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
-
-    public RestaurantListFragment() {
-        // Required empty public constructor
-    }
     private OnRestaurantSelectedListener mOnRestaurantSelectedListener;
+
+    public RestaurantListFragment() {}
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mEditor = mSharedPreferences.edit();
+
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -61,22 +69,10 @@ public class RestaurantListFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mEditor = mSharedPreferences.edit();
-
-        // Instructs fragment to include menu options:
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurant_list, container, false);
         ButterKnife.bind(this, view);
-
         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
 
         if (mRecentAddress != null) {
@@ -87,12 +83,8 @@ public class RestaurantListFragment extends Fragment {
     }
 
     @Override
-    // Method is now void, menu inflater is now passed in as argument:
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        // Call super to inherit method from parent:
         super.onCreateOptionsMenu(menu, inflater);
-
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
@@ -119,7 +111,6 @@ public class RestaurantListFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void getRestaurants(String location) {
         final YelpService yelpService = new YelpService();
 
@@ -135,33 +126,22 @@ public class RestaurantListFragment extends Fragment {
                 mRestaurants = yelpService.processResults(response);
 
                 getActivity().runOnUiThread(new Runnable() {
-                    // Line above states 'getActivity()' instead of previous 'RestaurantListActivity.this'
-                    // because fragments do not have own context, and must inherit from corresponding activity.
 
                     @Override
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getActivity(), mRestaurants, mOnRestaurantSelectedListener);
                         mRecyclerView.setAdapter(mAdapter);
-                        // Line above states `getActivity()` instead of previous
-                        // 'getApplicationContext()' because fragments do not have own context,
-                        // must instead inherit it from corresponding activity.
-
-                        mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                        // Line above states 'new LinearLayoutManager(getActivity());' instead of previous
-                        // 'new LinearLayoutManager(RestaurantListActivity.this);' when method resided
-                        // in RestaurantListActivity because Fragments do not have context
-                        // and must instead inherit from corresponding activity.
-
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
         });
-
     }
+
     private void addToSharedPreferences(String location) {
         mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
     }
+
 }

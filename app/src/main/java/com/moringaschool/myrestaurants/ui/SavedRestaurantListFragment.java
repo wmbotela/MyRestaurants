@@ -29,16 +29,12 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class SavedRestaurantListFragment extends Fragment implements OnStartDragListener {
-
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private FirebaseRestaurantListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
-    public SavedRestaurantListFragment() {
-        // Required empty public constructor
-    }
-
+    public SavedRestaurantListFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +44,7 @@ public class SavedRestaurantListFragment extends Fragment implements OnStartDrag
         setUpFirebaseAdapter();
         return view;
     }
+
     private void setUpFirebaseAdapter() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
@@ -57,15 +54,11 @@ public class SavedRestaurantListFragment extends Fragment implements OnStartDrag
                 .child(uid)
                 .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
-        //  In line below, we change 6th parameter 'this' to 'getActivity()'
-        //  because fragments do not have own context:
         mFirebaseAdapter = new FirebaseRestaurantListAdapter(Restaurant.class,
                 R.layout.restaurant_list_item_drag, FirebaseRestaurantViewHolder.class,
                 query, this, getActivity());
 
         mRecyclerView.setHasFixedSize(true);
-
-        //In line below, we change 'this' to 'getActivity()' because fragments do not have own context:
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFirebaseAdapter);
 
@@ -88,12 +81,9 @@ public class SavedRestaurantListFragment extends Fragment implements OnStartDrag
     }
 
     @Override
-    //method is now public
     public void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
     }
+
 }
-
-
-
